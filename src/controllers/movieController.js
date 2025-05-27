@@ -43,4 +43,19 @@ const listMovie = async (req, res) => {
     
 }
 
-export  {addMovie, listMovie} ;
+
+const removeMovie = async (req, res)=>{
+
+    try {
+
+        await movieModal.findByIdAndDelete(req.body.id);
+        res.json({success: true, message : "Movie removed"})
+
+    }
+    catch(error ){
+       res.json({success: false})
+    }
+
+}
+
+export  {addMovie, listMovie, removeMovie} ;
